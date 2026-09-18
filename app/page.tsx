@@ -167,7 +167,7 @@ export default function Home() {
           <div className="hero-content">
             <div className="eyebrow"><span className="eyebrow-line" /> MOATH ZAYADNEH</div>
             <h1 id="hero-title">Software Engineer</h1>
-            <p className="hero-lead">As a <strong>backend engineer with 3+ years of professional experience</strong>, I build distributed Node.js services and high-performance C++ network systems. My work spans microservices, message-driven processing, caching, and query optimization—from React interfaces down to hand-rolled TCP/IP implementations.</p>
+            <p className="hero-lead">I&apos;m a <strong>backend-focused software engineer with 3+ years of experience</strong> building and deploying RESTful APIs with Node.js, Django, and Java Spring Boot. I work across microservices and monoliths, scaling systems with PostgreSQL, MongoDB, Redis, BullMQ, GraphQL, and OpenSearch. My background also spans C++ networking, React, and deployments with AWS, Docker, and Nginx. I teach 24,000+ students on Udemy.</p>
             <a className="hero-email" href="mailto:moathzayadneh@gmail.com"><Mail size={18} strokeWidth={1.8} /> moathzayadneh@gmail.com <ArrowUpRight size={18} strokeWidth={1.8} /></a>
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">Explore my work <ArrowDownRight size={18} strokeWidth={1.8} /></a>
@@ -200,3 +200,4 @@ export default function Home() {
     </main>
   );
 }
+
