@@ -20,4 +20,3 @@ Import the `Portfolio` GitHub repository into Vercel and keep the detected Next.
 ## GitHub Pages
 
 `npm run build` creates a static site in `out/`. Publish the contents of that folder at the root of the `themud2001.github.io` repository. Keep `.nojekyll` so GitHub Pages serves the `_next` assets.
-
