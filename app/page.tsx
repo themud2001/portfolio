@@ -12,7 +12,7 @@ const projects = [
     category: "Full-stack",
     kind: "Delivery platform",
     description: "A delivery platform with independent microservices, an API gateway that routes requests, and JWT authentication.",
-    tags: ["React", "Redux", "Node.js", "MySQL"],
+    tags: ["React", "Redux", "Node.js", "Express.js", "Sequelize", "MySQL"],
     mark: "AF",
     tone: "pink",
     source: "https://github.com/themud2001/Graduation-Project",
@@ -23,7 +23,7 @@ const projects = [
     category: "Full-stack",
     kind: "E-commerce application",
     description: "An e-commerce app with a product catalogue, cart, and order flow backed by a MongoDB document model.",
-    tags: ["React", "Redux", "Express", "MongoDB"],
+    tags: ["React", "Redux", "SCSS", "Express.js", "Mongoose", "MongoDB"],
     mark: "NC",
     tone: "plum",
     source: "https://github.com/themud2001/eCommerce",
@@ -79,8 +79,11 @@ const experience = [
     role: "Backend Engineer",
     company: "SeveralBrands",
     period: "Jan 2025 — Present",
+    duration: "",
+    employment: "Full-time",
+    focus: "Node.js microservices for high-volume lead processing",
     description: [
-      "Build and maintain Node.js / Express.js microservices that ingest, validate, and route high-volume lead submissions on an engineering team of 15+.",
+      "Build and maintain Node.js / Express.js microservices that ingest, validate, and route high-volume lead submissions.",
       "Designed a standardized Redis cache-key generator producing deterministic, namespace-scoped keys, making invalidation predictable and cutting the computational cost of bulk key removal.",
       "Introduced BullMQ message queues to move heavy processing off the request path, improving throughput and reducing response times.",
       "Modeled and optimized PostgreSQL access with Knex and Objection.js query builders, and MongoDB collections with Mongoose.",
@@ -94,6 +97,9 @@ const experience = [
     role: "C++ Network Engineer",
     company: "OT Masters",
     period: "Jun 2024 — Jan 2025",
+    duration: "8 mos",
+    employment: "Full-time",
+    focus: "Low-level, high-throughput network protocol engineering",
     description: [
       "Reverse-engineered network protocols by analyzing RFC specifications alongside live packet captures taken in Wireshark via the Npcap driver.",
       "Implemented protocol handling in C++ with libtins, writing custom data structures from scratch where standard containers could not meet performance requirements.",
@@ -105,7 +111,10 @@ const experience = [
   {
     role: "Full-Stack Developer",
     company: "Envent Australia Pty Ltd",
-    period: "Sep 2021 — Jan 2022",
+    period: "Sep 2021 — Jan 2023",
+    duration: "1 yr 5 mos",
+    employment: "Freelancer",
+    focus: "Interactive hospital wayfinding deployed to on-site kiosks",
     description: [
       "Built an interactive hospital navigation system deployed across kiosks in multiple zones of the facility.",
       "Implemented the underlying graph model and route-finding logic in Node.js, persisting nodes, edges, and coordinate data in MongoDB.",
@@ -117,6 +126,9 @@ const experience = [
     role: "Programming Instructor",
     company: "Udemy",
     period: "Apr 2018 — Present",
+    duration: "5+ yrs",
+    employment: "Full-time",
+    focus: "Programming courses for 24,000+ students worldwide",
     description: [
       "Authored and published 5+ programming courses reaching an audience of 24,000+ students worldwide.",
       "Created a curriculum spanning Node.js, React, Python, PHP, C++, and core web technologies including HTML, CSS, and JavaScript.",
@@ -127,10 +139,12 @@ const experience = [
 ];
 
 const skills = [
-  { title: "Backend & APIs", items: ["Node.js", "Express", "Fastify", "Java / Spring", "Django", "REST", "GraphQL", "Microservices"] },
-  { title: "Frontend", items: ["React", "Redux", "JavaScript", "HTML / CSS", "SASS / SCSS", "Responsive UI"] },
-  { title: "Data & infrastructure", items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "BullMQ", "OpenSearch", "AWS", "Docker"] },
-  { title: "Systems & tools", items: ["C++", "TCP/IP", "libtins", "pthread", "Nginx", "Git", "Mocha / Chai"] },
+  { title: "Backend & APIs", items: ["Node.js", "Express.js", "Fastify", "Java / Spring Boot", "Django", "RESTful APIs", "GraphQL", "PostGraphile", "Platformatic", "Microservices", "API gateways", "JWT"] },
+  { title: "Data & search", items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "OpenSearch", "Knex", "Objection.js", "Sequelize", "Mongoose"] },
+  { title: "Async & systems", items: ["BullMQ", "Background workers", "Caching", "Query optimization", "POSIX threads", "Multithreading", "TCP/IP", "RFC protocols", "libtins", "Wireshark", "Npcap", "Win32 API"] },
+  { title: "Frontend & languages", items: ["React", "Redux", "JavaScript", "Java", "Python", "C++", "SQL", "PHP", "HTML / CSS", "SASS / SCSS"] },
+  { title: "Cloud & delivery", items: ["AWS", "Docker", "Nginx", "Git / GitHub", "Responsive UI", "OOP", "MVC", "Design patterns"] },
+  { title: "Testing & integrations", items: ["Mocha", "Chai", "JUnit", "Postman", "Sentry", "Stripe", "Slack", "Novu"] },
 ];
 
 const nav = [
@@ -189,11 +203,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section section-experience" id="experience" aria-labelledby="experience-title"><div className="shell"><div className="section-heading"><div><p className="section-kicker"><span>02</span> / WHERE I&apos;VE WORKED</p><h2 id="experience-title">Experience<span className="accent-dot">.</span></h2></div><p className="section-intro">Backend platforms, high-throughput networking, hospital wayfinding, and teaching at scale.</p></div><div className="experience-list">{experience.map((item, index) => <article className="experience-item" key={item.company}><div className="experience-index">0{index + 1}</div><div className="experience-main"><div className="experience-title-row"><div><p className="experience-company">{item.company}</p><h3>{item.role}</h3></div><span className="experience-period">{item.period}</span></div><ul className="experience-description">{item.description.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul><div className="tag-list">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div><ArrowUpRight className="experience-arrow" size={21} strokeWidth={1.5} /></article>)}</div></div></section>
+        <section className="section section-experience" id="experience" aria-labelledby="experience-title"><div className="shell"><div className="section-heading"><div><p className="section-kicker"><span>02</span> / WHERE I&apos;VE WORKED</p><h2 id="experience-title">Experience<span className="accent-dot">.</span></h2></div><p className="section-intro">Backend platforms, high-throughput networking, hospital wayfinding, and teaching at scale.</p></div><div className="experience-list">{experience.map((item, index) => <article className="experience-item" key={item.company}><div className="experience-index">0{index + 1}</div><div className="experience-main"><div className="experience-title-row"><div><p className="experience-company">{item.company}</p><h3>{item.role} <span className="experience-employment">· {item.employment}</span></h3></div><span className="experience-period">{item.period}{item.duration && <small>({item.duration})</small>}</span></div><p className="experience-focus">{item.focus}</p><ul className="experience-description">{item.description.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul><div className="tag-list">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div><ArrowUpRight className="experience-arrow" size={21} strokeWidth={1.5} /></article>)}</div></div></section>
 
         <section className="section section-skills" id="skills" aria-labelledby="skills-title"><div className="shell"><div className="section-heading"><div><p className="section-kicker"><span>03</span> / MY TOOLKIT</p><h2 id="skills-title">Skills<span className="accent-dot">.</span></h2></div><p className="section-intro">Tools and technologies I use to design, build, and maintain dependable software.</p></div><div className="skills-grid">{skills.map((group, index) => <div className="skill-group" key={group.title}><div className="skill-group-head"><span>0{index + 1}</span><h3>{group.title}</h3></div><div className="skill-items">{group.items.map((item) => <span key={item}>{item}</span>)}</div></div>)}</div></div></section>
 
-        <section className="about-section" id="about" aria-labelledby="about-title"><div className="shell about-grid"><div><p className="section-kicker"><span>04</span> / A LITTLE ABOUT ME</p><h2 id="about-title">Curiosity drives<br /><em>the work.</em></h2></div><div className="about-copy"><p>I&apos;m a software engineer who enjoys working across layers—from responsive React interfaces to distributed backend services and low-level C++ networking. I focus on clear architecture, performance, and making complex systems easier to use.</p><p>I&apos;ve taught more than 24,000 students through programming courses on Udemy. I hold a B.Sc. in Computer Engineering from Jordan University of Science and Technology.</p><a className="text-link" href="https://github.com/themud2001" target="_blank" rel="noopener noreferrer">Explore my GitHub <ArrowUpRight size={17} /></a></div></div></section>
+        <section className="about-section" id="about" aria-labelledby="about-title"><div className="shell about-grid"><div><p className="section-kicker"><span>04</span> / A LITTLE ABOUT ME</p><h2 id="about-title">Curiosity drives<br /><em>the work.</em></h2></div><div className="about-copy"><p>I&apos;m a backend-focused software engineer who builds RESTful APIs and services with Node.js, Django, and Java Spring Boot. I&apos;ve worked across microservice and monolithic architectures, with an emphasis on reliable processing, caching, and fast data access.</p><p>From C++ networking and protocol work to React interfaces and deployments with AWS, Docker, and Nginx, I enjoy connecting the details of a system to the experience people have with it. I also teach 24,000+ students on Udemy and hold a B.Sc. in Computer Engineering from Jordan University of Science and Technology.</p><a className="text-link" href="https://github.com/themud2001" target="_blank" rel="noopener noreferrer">Explore my GitHub <ArrowUpRight size={17} /></a></div></div></section>
 
         <footer className="footer" id="contact"><div className="shell"><p className="section-kicker"><span>05</span> / GET IN TOUCH</p><div className="footer-main"><div><h2>Have something<br /><em>in mind?</em></h2><p>Let&apos;s make it happen.</p></div><a className="footer-mail" href="mailto:moathzayadneh@gmail.com" aria-label="Email Moath Zayadneh"><ArrowUpRight size={38} strokeWidth={1.4} /></a></div><a className="email-link" href="mailto:moathzayadneh@gmail.com">moathzayadneh@gmail.com</a><div className="footer-bottom"><span>© {new Date().getFullYear()} MOATH ZAYADNEH</span><div><a href="https://github.com/themud2001" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={19} /></a><a href="https://www.linkedin.com/in/moath-zayadneh" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a><a href="mailto:moathzayadneh@gmail.com" aria-label="Email"><Mail size={19} /></a></div><a href="#top">BACK TO TOP ↑</a></div></div></footer>
       </div>
