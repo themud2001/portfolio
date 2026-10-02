@@ -199,7 +199,35 @@ export default function Home() {
           <div className="shell">
             <div className="section-heading"><div><p className="section-kicker"><span>01</span> / SELECTED WORK</p><h2 id="projects-title">Projects<span className="accent-dot">.</span></h2></div><p className="section-intro">A selection of things I&apos;ve built, from full-stack applications to software closer to the metal.</p></div>
             <div className="project-toolbar"><div className="filters" role="group" aria-label="Filter projects">{(["All", "Full-stack", "Systems"] as Category[]).map((item) => <button key={item} type="button" className={filter === item ? "filter active" : "filter"} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}<span>{item === "All" ? projects.length : projects.filter((project) => project.category === item).length}</span></button>)}</div><span className="results-count">SHOWING {String(visibleProjects.length).padStart(2, "0")} PROJECTS</span></div>
-            <div className="project-grid">{visibleProjects.map((project) => <article className="project-card" key={project.name}><div className={`project-visual tone-${project.tone}`}><span className="visual-index">PROJECT / {project.number}</span><div className="project-glyph"><span>{project.mark}</span><i /></div><span className="visual-kind">{project.kind}</span></div><div className="project-meta"><span>{project.category.toUpperCase()}</span><span>{project.number} / 0{projects.length}</span></div><h3>{project.name}</h3><p>{project.description}</p><div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>{project.source && <a className="project-source" href={project.source} target="_blank" rel="noopener noreferrer">View source <ArrowUpRight size={15} /></a>}</article>)}</div>
+            <div className="project-grid">
+              {visibleProjects.map((project) => {
+                const content = (
+                  <>
+                    <div className={`project-visual tone-${project.tone}`}>
+                      <span className="visual-index">PROJECT / {project.number}</span>
+                      {project.source && <span className="visual-link-indicator" aria-hidden="true"><ArrowUpRight size={20} strokeWidth={1.8} /></span>}
+                      <div className="project-glyph"><span>{project.mark}</span><i /></div>
+                      <span className="visual-kind">{project.kind}</span>
+                    </div>
+                    <div className="project-meta"><span>{project.category.toUpperCase()}</span><span>{project.number} / 0{projects.length}</span></div>
+                    <h3>{project.name}</h3>
+                    <p>{project.description}</p>
+                    <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                    {project.source && <span className="project-source">View source on GitHub <ArrowUpRight size={18} strokeWidth={1.8} /></span>}
+                  </>
+                );
+
+                return (
+                  <article className="project-card" key={project.name}>
+                    {project.source ? (
+                      <a className="project-card-link" href={project.source} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} source code on GitHub (opens in a new tab)`}>
+                        {content}
+                      </a>
+                    ) : content}
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </section>
 
