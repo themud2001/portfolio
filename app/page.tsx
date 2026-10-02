@@ -3,11 +3,22 @@
 import { useState } from "react";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Menu, X } from "lucide-react";
 
-type Category = "All" | "Full-stack" | "Systems";
+type Category = "All" | "Backend" | "Full-stack" | "Systems";
 
 const projects = [
   {
     number: "01",
+    name: "Fuel Route Optimizer",
+    category: "Backend",
+    kind: "Route planning API",
+    description: "A Django API that combines OSRM routes and fuel prices to plan cost-efficient refuelling stops for truck drivers. Uses offline location validation, spatial indexing, and a monotonic-stack planner within tank and range limits, returning ordered stops, estimated fuel cost, and a GeoJSON map with 24-hour caching.",
+    tags: ["Python", "Django", "OSRM", "GeoJSON", "GeoNames", "US Census data"],
+    mark: "FR",
+    tone: "pink",
+    source: "https://github.com/themud2001/fuel-route-optimizer",
+  },
+  {
+    number: "02",
     name: "AquaFlow",
     category: "Full-stack",
     kind: "Delivery platform",
@@ -18,7 +29,7 @@ const projects = [
     source: "https://github.com/themud2001/Graduation-Project",
   },
   {
-    number: "02",
+    number: "03",
     name: "NextCart",
     category: "Full-stack",
     kind: "E-commerce application",
@@ -29,7 +40,7 @@ const projects = [
     source: "https://github.com/themud2001/eCommerce",
   },
   {
-    number: "03",
+    number: "04",
     name: "Text Editor",
     category: "Systems",
     kind: "Desktop software",
@@ -40,7 +51,7 @@ const projects = [
     source: "https://github.com/themud2001/TextEditor",
   },
   {
-    number: "04",
+    number: "05",
     name: "Blog System",
     category: "Full-stack",
     kind: "Publishing application",
@@ -51,7 +62,7 @@ const projects = [
     source: "",
   },
   {
-    number: "05",
+    number: "06",
     name: "MAMKWIC",
     category: "Full-stack",
     kind: "E-learning platform",
@@ -62,7 +73,7 @@ const projects = [
     source: "",
   },
   {
-    number: "06",
+    number: "07",
     name: "Ticket System",
     category: "Systems",
     kind: "MVC application",
@@ -198,7 +209,7 @@ export default function Home() {
         <section className="section section-projects" id="projects" aria-labelledby="projects-title">
           <div className="shell">
             <div className="section-heading"><div><p className="section-kicker"><span>01</span> / SELECTED WORK</p><h2 id="projects-title">Projects<span className="accent-dot">.</span></h2></div><p className="section-intro">A selection of things I&apos;ve built, from full-stack applications to software closer to the metal.</p></div>
-            <div className="project-toolbar"><div className="filters" role="group" aria-label="Filter projects">{(["All", "Full-stack", "Systems"] as Category[]).map((item) => <button key={item} type="button" className={filter === item ? "filter active" : "filter"} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}<span>{item === "All" ? projects.length : projects.filter((project) => project.category === item).length}</span></button>)}</div><span className="results-count">SHOWING {String(visibleProjects.length).padStart(2, "0")} PROJECTS</span></div>
+            <div className="project-toolbar"><div className="filters" role="group" aria-label="Filter projects">{(["All", "Backend", "Full-stack", "Systems"] as Category[]).map((item) => <button key={item} type="button" className={filter === item ? "filter active" : "filter"} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}<span>{item === "All" ? projects.length : projects.filter((project) => project.category === item).length}</span></button>)}</div><span className="results-count">SHOWING {String(visibleProjects.length).padStart(2, "0")} PROJECTS</span></div>
             <div className="project-grid">
               {visibleProjects.map((project) => {
                 const content = (
