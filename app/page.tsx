@@ -5,9 +5,34 @@ import { ArrowDownRight, ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Menu,
 
 type Category = "All" | "Backend" | "Full-stack" | "Systems";
 
-const projects = [
+type Project = {
+  number: string;
+  name: string;
+  category: Exclude<Category, "All">;
+  kind: string;
+  description: string;
+  tags: readonly string[];
+  mark: string;
+  tone: "pink" | "plum" | "graphite";
+  source: string;
+  live?: string;
+};
+
+const projects: readonly Project[] = [
   {
     number: "01",
+    name: "Haulplan",
+    category: "Full-stack",
+    kind: "Truck trip planner",
+    description: "A full-stack truck trip planner that turns pickup and drop-off locations into real road routes, duty schedules, and printable daily driver logs. Includes interactive map selection, fuel and rest stops, JSON trip export, and hours-of-service scheduling.",
+    tags: ["Python", "Django", "React", "TypeScript", "Leaflet", "OSRM", "Photon"],
+    mark: "HP",
+    tone: "plum",
+    source: "https://github.com/themud2001/haulplan",
+    live: "https://haulplan.vercel.app/",
+  },
+  {
+    number: "02",
     name: "Fuel Route Optimizer",
     category: "Backend",
     kind: "Route planning API",
@@ -18,7 +43,7 @@ const projects = [
     source: "https://github.com/themud2001/fuel-route-optimizer",
   },
   {
-    number: "02",
+    number: "03",
     name: "AquaFlow",
     category: "Full-stack",
     kind: "Delivery platform",
@@ -29,7 +54,7 @@ const projects = [
     source: "https://github.com/themud2001/Graduation-Project",
   },
   {
-    number: "03",
+    number: "04",
     name: "NextCart",
     category: "Full-stack",
     kind: "E-commerce application",
@@ -40,7 +65,7 @@ const projects = [
     source: "https://github.com/themud2001/eCommerce",
   },
   {
-    number: "04",
+    number: "05",
     name: "Text Editor",
     category: "Systems",
     kind: "Desktop software",
@@ -51,7 +76,7 @@ const projects = [
     source: "https://github.com/themud2001/TextEditor",
   },
   {
-    number: "05",
+    number: "06",
     name: "Blog System",
     category: "Full-stack",
     kind: "Publishing application",
@@ -62,7 +87,7 @@ const projects = [
     source: "",
   },
   {
-    number: "06",
+    number: "07",
     name: "MAMKWIC",
     category: "Full-stack",
     kind: "E-learning platform",
@@ -73,7 +98,7 @@ const projects = [
     source: "",
   },
   {
-    number: "07",
+    number: "08",
     name: "Ticket System",
     category: "Systems",
     kind: "MVC application",
@@ -83,7 +108,7 @@ const projects = [
     tone: "pink",
     source: "",
   },
-] as const;
+];
 
 const experience = [
   {
@@ -216,7 +241,7 @@ export default function Home() {
                   <>
                     <div className={`project-visual tone-${project.tone}`}>
                       <span className="visual-index">PROJECT / {project.number}</span>
-                      {project.source && <span className="visual-link-indicator" aria-hidden="true"><ArrowUpRight size={20} strokeWidth={1.8} /></span>}
+                      {(project.live || project.source) && <span className="visual-link-indicator" aria-hidden="true"><ArrowUpRight size={20} strokeWidth={1.8} /></span>}
                       <div className="project-glyph"><span>{project.mark}</span><i /></div>
                       <span className="visual-kind">{project.kind}</span>
                     </div>
@@ -224,17 +249,23 @@ export default function Home() {
                     <h3>{project.name}</h3>
                     <p>{project.description}</p>
                     <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                    {project.source && <span className="project-source">View source on GitHub <ArrowUpRight size={18} strokeWidth={1.8} /></span>}
+                    {project.source && !project.live && <span className="project-source">View source on GitHub <ArrowUpRight size={18} strokeWidth={1.8} /></span>}
                   </>
                 );
 
                 return (
-                  <article className="project-card" key={project.name}>
-                    {project.source ? (
-                      <a className="project-card-link" href={project.source} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} source code on GitHub (opens in a new tab)`}>
+                  <article className={project.live ? "project-card project-card-with-demo" : "project-card"} key={project.name}>
+                    {project.live || project.source ? (
+                      <a className="project-card-link" href={project.live || project.source} target="_blank" rel="noopener noreferrer" aria-label={project.live ? `Visit ${project.name} live website (opens in a new tab)` : `View ${project.name} source code on GitHub (opens in a new tab)`}>
                         {content}
                       </a>
                     ) : content}
+                    {project.live && (
+                      <div className="project-actions">
+                        <a className="project-demo" href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} live demo (opens in a new tab)`}>Live demo <ArrowUpRight size={17} strokeWidth={1.8} /></a>
+                        {project.source && <a className="project-repository" href={project.source} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} source code on GitHub (opens in a new tab)`}>View source <ArrowUpRight size={17} strokeWidth={1.8} /></a>}
+                      </div>
+                    )}
                   </article>
                 );
               })}
